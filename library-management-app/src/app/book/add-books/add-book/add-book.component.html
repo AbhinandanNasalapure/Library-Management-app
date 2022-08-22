@@ -1,0 +1,102 @@
+<section id="cover" class="min-vh-100">
+  <div id="cover-caption">
+    <div class="container">
+      <div class="row text-white">
+        <div class="col-md-8 mx-auto text-center form p-4">
+          <h1 class="display-4 py-2 text-truncate">Add Book to the Library</h1>
+          <div class="px-2">
+            <div class="submit-form justify-content-center">
+              <div *ngIf="!submitted">
+                <form [formGroup]="bookFormData">
+                  <div class="form-group">
+                    <label class="sr-only">Book Title</label>
+                    <input type="text" class="form-control" placeholder="Book title" formControlName="title">
+
+                  </div>
+                  <md-input-container formGroupName="author">
+                    <div class="form-group">
+                      <label class="sr-only">Book Author Given Name</label>
+                      <input type="text" class="form-control" placeholder="Author Given Name"
+                        formControlName="givenName">
+
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only">Book Author Surname</label>
+                      <input type="text" class="form-control" placeholder="Author SurName" formControlName="surName">
+
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only">Book Author Date Of Birth</label>
+                      <input type="date" class="form-control" placeholder="Author Date of Birth"
+                        formControlName="dateOfBirth">
+
+                    </div>
+                    <div class="form-group">
+                      <label class="sr-only">Book Author Bio</label>
+                      <input type="text" class="form-control" placeholder="Author Bio" formControlName="bio">
+                    </div>
+                  </md-input-container>
+
+                  <div class="form-group">
+                    <label class="sr-only">Book Publisher</label>
+                    <input type="text" class="form-control" placeholder="Book Publisher" formControlName="publisher">
+
+                  </div>
+
+                  <div class="form-group">
+                    <label class="sr-only">Book Edition</label>
+                    <input type="text" class="form-control" placeholder="Book Edition" formControlName="edition">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="sr-only">Book ISBN</label>
+                    <input type="text" class="form-control" placeholder="Book ISBN" formControlName="isbn">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="sr-only">Publishing Date</label>
+                    <input type="date" class="form-control" placeholder="publishingDate"
+                      formControlName="publishingDate">
+                  </div>
+                  <button (click)="addChapter()">Add new Chapter</button><br><br>
+                  <button (click)="removeChapter()"> reset Chapter</button><br><br>
+                  <div formArrayName="chapters">
+                    <div class="row" *ngFor="let chapter of chapters.controls; let i = index">
+                      <div [formGroupName]="i">
+                        <div class="form-group">
+                          <label class="sr-only">Chapter Title</label>
+                          <input type="text" class="form-control" placeholder="Chapter Title" formControlName="title">
+                        </div>
+                        <div class="form-group">
+                          <label class="sr-only">Chapter startPage</label>
+                          <input type="number" class="form-control" placeholder="Chapter startPage"
+                            formControlName="startPage">
+                        </div>
+                        <div class="form-group">
+                          <label class="sr-only">Chapter Number Of Pages</label>
+                          <input type="text" class="form-control" placeholder="Chapter number of pages"
+                            formControlName="numberOfPages">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="btn-group btn-block">
+                    <button type="submit" class="btn btn-success ml-2 rounded" (click)="addBook()"
+                      [disabled]="bookFormData.invalid">Add Book</button>
+                    <button type="reset" class="btn btn-danger mr-2 rounded">Clear</button>
+
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="submitted">
+        <h3>You have successfully added a Book to the library</h3>
+        <button class="btn btn-success" (click)="newBook()">Add New Book</button>
+      </div>
+    </div>
+  </div>
+</section>

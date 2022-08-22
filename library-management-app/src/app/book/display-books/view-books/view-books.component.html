@@ -1,0 +1,57 @@
+<section id="cover" class="min-vh-100">
+  <div id="cover-caption">
+    <div class="container">
+      <div class="row text-white">
+        <div class="col-md-14 mx-auto text-center form p-4">
+          <h1 class="display-4 py-4 text-truncate">All Library Books</h1>
+          <div class="px-2">
+
+                <form #pageNumber="ngForm">
+                </form>
+                <table class="table table-striped table-bordered">
+                  <thead>
+                      <tr>
+                          <th>Title</th>
+                          <th>Author</th>
+                          <th>Chapters</th>
+                          <th>Publisher</th>
+                          <th>Edition</th>
+                          <th>ISBN</th>
+                          <th>Publishing Date</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let book of books; let i= index">
+                          <td>{{book.title}}</td>
+                          <td>
+                            <ul class="list-group">
+                            <li class="list-group-item"><b>Name: </b>{{book.author.givenName}}</li>
+                            <li class="list-group-item"><b>Surname: </b>{{book.author.surName}}</li>
+                            <li class="list-group-item"><b>date of birth:  </b>{{book.author.dateOfBirth}}</li>
+                            <li class="list-group-item"><b>Bio: </b>{{book.author.bio}}</li>
+                          </ul>
+                        </td>
+                          <td>
+                            <div *ngFor = "let chapter of book.chapters; let j=index">
+                            <ul class="list-group">
+                              <li class="list-group-item"><b>Title: </b>{{chapter.title}}</li>
+                              <li class="list-group-item"><b>Start page: </b>{{chapter.startPage}}</li>
+                              <li class="list-group-item"><b>Number of pages: </b>{{chapter.numberOfPages}}</li>
+                            </ul>
+                            <br>
+                          </div>
+                        </td>
+
+                          <td>{{book.publisher}}</td>
+                          <td>{{book.edition}}</td>
+                          <td>{{book.isbn}}</td>
+                          <td>{{book.publishingDate}}</td>
+                      </tr>
+                  </tbody>
+              </table>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</section>
